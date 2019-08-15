@@ -1,16 +1,6 @@
 import ballerina/grpc;
-import ballerina/io;
 
-public function main (string... args) {
-    PizzaServiceClient ep = new("http://localhost:9090");
-    // PizzaServiceBlockingClient blockingEp = new("http://localhost:9090");
-
-    pizzaOrder order = 
-    ep -> orderPizza();
-
-}
-
-service PizzaServiceMessageListener = service {
+service PizzaGRPCServiceMessageListener = service {
 
     resource function onMessage(string message) {
         io:println("Response received from server: " + message);
