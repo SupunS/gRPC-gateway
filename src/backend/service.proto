@@ -1,0 +1,12 @@
+syntax = "proto3";
+package grpc_service;
+import "google/protobuf/wrappers.proto";
+service PizzaService {
+    rpc orderPizza(orderInfo) returns (google.protobuf.StringValue);
+}
+
+message orderInfo {
+    string id = 1;
+    string name = 2;
+    string description = 3;
+}
