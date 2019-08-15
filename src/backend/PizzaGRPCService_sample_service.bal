@@ -1,7 +1,14 @@
 import ballerina/grpc;
 import ballerina/log;
 
-listener grpc:Listener ep = new (9092);
+listener grpc:Listener ep = new (9092, {
+    secureSocket: {
+        keyStore: {
+            path: "/Library/Ballerina/ballerina-1.0.0-beta-SNAPSHOT/bre/security/ballerinaKeystore.p12",
+            password: "ballerina"
+        }
+    }
+});
 
 service PizzaGRPCService on ep {
 
